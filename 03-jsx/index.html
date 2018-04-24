@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>React - Component</title>
+    <title>React - Jsx</title>
     <script src="js/react.min.js"></script>
     <script src="js/react-dom.min.js"></script>
     <script src="js/browser.min.js"></script>
@@ -13,14 +13,18 @@
     <div id="container"></div>
 
     <script type="text/babel">
-        let BiponComponent = React.createClass({
-            render: function ) {
-                <div><h2> Hello World, with component</h2></div>
-            }
-
-        });
+        function formatName(user) {
+            return user.firstName + ' ' + user.lastName;
+        }
+        const user = {
+            firstName: 'Asik',
+            lastName: 'Arif'
+        };
+        const element = (
+            <h2>Hello, {formatName(user)}</h2>
+        )
        
-        ReactDOM.render(<BiponComponent />, document.getElementById('container'));
+        ReactDOM.render(element, document.getElementById('container'));
     </script>
 
 </body>

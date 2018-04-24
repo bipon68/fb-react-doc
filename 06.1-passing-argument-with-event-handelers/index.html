@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Component</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+        var speakers = ['Scott Hanselman', 'John Papa', 'Scott Guthrie', 'Michele Bustamante', 'Dan Wahlin', 'Debora Kurata', 'Zoiner Tejada', 'Scott Allen', 'Elijah Manor', 'Ward Bell', 'Todd Anglin', 'Saron Yitbare', 'Scott Hunter'];
+
+        var HelloWorld = React.createClass({
+        handleClick(name, e) { alert(name); },
+        render: function() {
+            return <ul>{
+            this.props.names.map(
+                name => <li onClick={this.handleClick.bind(this, name)}>{name}</li>
+                )
+            }</ul>;
+        }
+        });
+
+
+        // React.render(<HelloWorld names={speakers} />, document.body);
+        ReactDOM.render(<HelloWorld />, document.getElementById('container'));
+    </script>
+
+</body>
+</html>

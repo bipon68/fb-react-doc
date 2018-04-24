@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Component</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+        const speakers = ['Scott Hanselman', 'John Papa', 'Scott Guthrie', 'Michele Bustamante', 'Dan Wahlin', 'Debora Kurata', 'Zoiner Tejada', 'Scott Allen', 'Elijah Manor', 'Ward Bell', 'Todd Anglin', 'Saron Yitbare', 'Scott Hunter'];
+
+        class SpeakerList extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { names: this.props.names };
+        }
+        handleSort() {
+            this.setState({ names: this.state.names.sort() });
+        }
+        handleScott() {
+            var scotts = this.state.names.filter(function(name) {
+            return name.indexOf('Scott') > -1;
+            });
+            
+            this.setState({ names: scotts });
+        }
+        render() {
+            return (
+            <div>
+                <ul>
+                    {this.state.names.map(function(name) {
+                        return <li>{name}</li>;
+                    })}
+                </ul>
+                    <button onClick={this.handleSort.bind(this)}>Sort</button>
+                <button onClick={this.handleScott.bind(this)}>Scott</button>
+            </div>
+            );
+        }
+        }
+
+        ReactDOM.render(
+        <SpeakerList names={speakers} />,
+        document.getElementById('container')
+        );
+
+    </script>
+
+</body>
+</html>

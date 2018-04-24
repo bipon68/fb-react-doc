@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Refactor List and keys</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+        function Blog(props){
+            const sidebar = (
+                <ul>
+                    {props.posts.map((post) => 
+                        <li key={post.id}>
+                            {post.title}
+                        </li>
+                    )}
+                </ul>
+            );
+            const content = props.posts.map((post) => 
+                <div key={post.id}>
+                    <h2>{post.title}</h2>
+                    <p>{post.content}</p>
+                </div>
+            );
+            return (
+                <div>
+                    {sidebar}
+                    <hr />
+                    {content}
+                </div>
+            )
+        }
+
+        const posts = [
+            {id: 1, title: 'Hello World', content: 'Welcome to learning React'},
+            {id: 2, title: 'Installation', content: 'You can install react from NPM '}
+        ];
+       
+        ReactDOM.render(
+            <Blog posts={posts} />, 
+            
+            document.getElementById('container'));
+    </script>
+
+</body>
+</html>

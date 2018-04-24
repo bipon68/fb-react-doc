@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - State Lifecycle</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+        // functional component convention
+        function Clock(props){
+            return(
+                <div>
+                    <h2>Hello World</h2>
+                    <h3>It is {props.date.toLocaleTimeString()}</h3>
+                </div>
+            );
+        }
+
+        function tick(){
+            ReactDOM.render(
+                <Clock date={new Date()}/>, 
+                document.getElementById('container'));
+        }
+       
+        
+
+        setInterval(tick, 1000)
+
+    </script>
+
+</body>
+</html>

@@ -13,14 +13,13 @@
     <div id="container"></div>
 
     <script type="text/babel">
-        let BiponComponent = React.createClass({
-            render: function ) {
-                <div><h2> Hello World, with component</h2></div>
-            }
+        function Welcome(props) {
+            return <h1>Hello Mr {props.name}</h1>
+        }
 
-        });
+        const element = <Welcome name="Putuman"/>
        
-        ReactDOM.render(<BiponComponent />, document.getElementById('container'));
+        ReactDOM.render(element, document.getElementById('container'));
     </script>
 
 </body>

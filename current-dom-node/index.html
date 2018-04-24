@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Component</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+        class HelloWorld extends React.Component {
+            /* ... constructor ... */
+            constructor() {
+                super();
+                this.state = { count: 0 };
+                this.handleClick = this.handleClick.bind(this);
+            }
+            componentDidMount() {
+                const node = ReactDOM.findDOMNode(this);
+                node.style.backgroundColor = "red";
+            }
+            /* ... handleClick ... */
+            handleClick() {
+                this.setState({ count: this.state.count + 1 });
+            }
+            render() {
+                return <div>
+                <p>Hello <span ref={ c => this.count = c }>
+                    {this.state.count}
+                </span>!</p>
+                <button onClick={this.handleClick.bind(this)}>
+                    Click Me
+                </button>
+                </div>;
+            }
+            }
+       
+        ReactDOM.render(<HelloWorld />, document.getElementById('container'));
+    </script>
+
+</body>
+</html>

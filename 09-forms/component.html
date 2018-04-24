@@ -13,13 +13,11 @@
     <div id="container"></div>
 
     <script type="text/babel">
-        let BiponComponent = React.createClass({
-            render: function ) {
-                <div><h2> Hello World, with component</h2></div>
+        var BiponComponent = React.createClass({
+            render: function() {
+                return (<h2>This is a simple component</h2>);
             }
-
         });
-       
         ReactDOM.render(<BiponComponent />, document.getElementById('container'));
     </script>
 

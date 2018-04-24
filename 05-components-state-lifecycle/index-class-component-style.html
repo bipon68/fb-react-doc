@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Class style component</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+  
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {date: new Date()};
+            }
+
+            componentDidMount() {
+                this.timerID = setInterval(
+                () => this.tick(),
+                1000
+                );
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timerID);
+            }
+
+            tick() {
+                this.setState({
+                date: new Date()
+                });
+            }
+
+            // old style function 
+        // function Clock(props){
+        //     return(
+        //         <div>
+        //             <h2>Hello World</h2>
+        //             <h3>It is {props.date.toLocaleTimeString()}</h3>
+        //         </div>
+        //     );
+        // }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Hello, world!</h1>
+                        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                    </div>
+                    );
+                }
+            }
+
+            ReactDOM.render(
+                <Clock />,
+                document.getElementById('container')
+            );
+
+    </script>
+
+</body>
+</html>

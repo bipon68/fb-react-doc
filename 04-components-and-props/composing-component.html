@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Jsx</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+        function Welcome(props) {
+            return <h1>Hello Mr {props.name}</h1>
+        }
+
+        function App(){
+            return(
+                <div>
+                    <Welcome name="Putuman"/>
+                    <Welcome name="Asik"/>
+                    <Welcome name="Arif"/>
+                </div>
+            )
+        }
+
+        
+       
+        ReactDOM.render(<App />, document.getElementById('container'));
+    </script>
+
+</body>
+</html>

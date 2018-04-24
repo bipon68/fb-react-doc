@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React - Refactor List and keys</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+
+    <script type="text/babel">
+
+        function ListItem(props){
+            // Correct! There is no need to specify the key here:
+            return <li>{props.value}</li>
+        }
+
+        function NumberList(props){
+            const numbers = props.numbers;
+            const listItems = numbers.map((number) => 
+                // Correct! Key should be specified inside the array.
+                <ListItem key={number.toString()}
+                    value={number} />
+            );
+            return(
+                <ul>
+                    {listItems}
+                </ul>
+                
+            );
+        }
+
+        const numbers = [1,2,3,4,5];
+       
+        ReactDOM.render(
+            <NumberList numbers={numbers} />, 
+            
+            document.getElementById('container'));
+    </script>
+
+</body>
+</html>
